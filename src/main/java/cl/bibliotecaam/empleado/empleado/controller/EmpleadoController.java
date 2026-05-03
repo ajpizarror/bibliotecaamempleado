@@ -38,7 +38,7 @@ public class EmpleadoController {
     }
 
     @GetMapping("/apellido/{appaterno}")
-    public ResponseEntity<EmpleadoResponseDTO> obtenerPorApellido(@PathVariable String appaterno){
+    public ResponseEntity<List<EmpleadoResponseDTO>> obtenerPorApellido(@PathVariable String appaterno){
         return ResponseEntity.ok(empleadoService.listarPorAppaterno(appaterno));
     }
 
