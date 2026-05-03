@@ -36,7 +36,7 @@ public class Empleado {
     private String apmaterno_emp;
 
     @Column(nullable = false)
-    private LocalDate fecha_contrato;
+    private LocalDate fec_contrato;
 
     @Column(nullable = false, length = 7, unique = false)
     private Long sueldo;
