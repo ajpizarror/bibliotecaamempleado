@@ -42,4 +42,11 @@ public class EmpleadoController {
         return ResponseEntity.ok(empleadoService.listarPorAppaterno(appaterno));
     }
 
+    @GetMapping("sueldo/{sueldo}")
+    public ResponseEntity<List<EmpleadoResponseDTO>> obtenerPorSueldo(@PathVariable Long sueldo){
+        return ResponseEntity.ok(empleadoService.listarPorSueldo(sueldo));
+    }
+
+
+
 }

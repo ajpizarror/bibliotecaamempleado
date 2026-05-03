@@ -58,4 +58,16 @@ public class EmpleadoService {
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
     }
+
+    public Empleado guardar(Empleado empleado){
+        return empleadoRepository.save(empleado);
+    }
+
+    public void eliminarPorId(Long id){
+        empleadoRepository.deleteById(id);
+    }
+
+    public void eliminarPorRun(Long run){
+        empleadoRepository.deleteByRun();
+    }
 }
