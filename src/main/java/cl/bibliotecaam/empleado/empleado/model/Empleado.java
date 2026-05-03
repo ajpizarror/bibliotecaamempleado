@@ -15,21 +15,21 @@ import java.time.LocalDate;
 public class Empleado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_emp;
+    private Long idEmp;
     @Column(nullable = false, length = 8, unique = true)
-    private Long numrun_emp;
+    private Long numrunEmp;
     @Column(nullable = false, length = 1, unique = false)
-    private String dvrun_emp;
+    private String dvrunEmp;
     @Column(nullable = false, length = 30, unique = false)
-    private String pnombre_emp;
+    private String pnombreEmp;
     @Column(nullable = true, length = 30, unique = false)
-    private String snombre_emp;
+    private String snombreEmp;
     @Column(nullable = false, length = 30, unique = false)
-    private String appaterno_emp;
+    private String appaternoEmp;
     @Column(nullable = false, length = 30, unique = false)
-    private String apmaterno_emp;
+    private String apmaternoEmp;
     @Column(nullable = false)
-    private LocalDate fec_contrato;
+    private LocalDate fecContrato;
     @Column(nullable = false, length = 7, unique = false)
     private Long sueldo;
 

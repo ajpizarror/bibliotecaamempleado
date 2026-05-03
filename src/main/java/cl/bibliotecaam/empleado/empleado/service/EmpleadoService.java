@@ -17,14 +17,14 @@ public class EmpleadoService {
 
     private EmpleadoResponseDTO mapToDTO(Empleado empleado){
         return new EmpleadoResponseDTO(
-                empleado.getId_emp(),
-                empleado.getNumrun_emp(),
-                empleado.getDvrun_emp(),
-                empleado.getPnombre_emp(),
-                empleado.getSnombre_emp(),
-                empleado.getAppaterno_emp(),
-                empleado.getApmaterno_emp(),
-                empleado.getFec_contrato(),
+                empleado.getIdEmp(),
+                empleado.getNumrunEmp(),
+                empleado.getDvrunEmp(),
+                empleado.getPnombreEmp(),
+                empleado.getSnombreEmp(),
+                empleado.getAppaternoEmp(),
+                empleado.getApmaternoEmp(),
+                empleado.getFecContrato(),
                 empleado.getSueldo()
         );
     }
@@ -41,12 +41,12 @@ public class EmpleadoService {
     }
 
     public Optional<EmpleadoResponseDTO> obtenerPorRun(Long numrun){
-        return empleadoRepository.findByNumrun_emp(numrun)
+        return empleadoRepository.findByNumrunEmp(numrun)
                 .stream().map(this::mapToDTO).findFirst();
     }
 
     public List<EmpleadoResponseDTO> listarPorAppaterno(String appaterno){
-        return empleadoRepository.findByAppaterno_emp(appaterno)
+        return empleadoRepository.findByAppaternoEmp(appaterno)
                 .stream()
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
@@ -65,9 +65,5 @@ public class EmpleadoService {
 
     public void eliminarPorId(Long id){
         empleadoRepository.deleteById(id);
-    }
-
-    public void eliminarPorRun(Long run){
-        empleadoRepository.deleteByRun();
     }
 }
