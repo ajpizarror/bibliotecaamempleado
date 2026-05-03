@@ -5,10 +5,7 @@ import cl.bibliotecaam.empleado.empleado.service.EmpleadoService;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -42,11 +39,19 @@ public class EmpleadoController {
         return ResponseEntity.ok(empleadoService.listarPorAppaterno(appaterno));
     }
 
-    @GetMapping("sueldo/{sueldo}")
+    @GetMapping("/sueldo/{sueldo}")
     public ResponseEntity<List<EmpleadoResponseDTO>> obtenerPorSueldo(@PathVariable Long sueldo){
         return ResponseEntity.ok(empleadoService.listarPorSueldo(sueldo));
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminar(@PathVariable Long id){
+        if (empleadoService.obtenerPorId(id).isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+        empleadoService.eliminarPorId(id);
+        return ResponseEntity.noContent().build();
+    }
 
 
 }
