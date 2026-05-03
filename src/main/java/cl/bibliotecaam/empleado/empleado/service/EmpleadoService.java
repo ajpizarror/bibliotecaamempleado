@@ -36,7 +36,11 @@ public class EmpleadoService {
                 .collect(Collectors.toList());
     }
 
-    public Optional<EmpleadoResponseDTO> listarPorRun(Long numrun){
+    public Optional<EmpleadoResponseDTO> obtenerPorId(Long id){
+        return empleadoRepository.findById(id).map(this::mapToDTO);
+    }
+
+    public Optional<EmpleadoResponseDTO> obtenerPorRun(Long numrun){
         return empleadoRepository.findByNumrun_emp(numrun)
                 .stream().map(this::mapToDTO).findFirst();
     }
