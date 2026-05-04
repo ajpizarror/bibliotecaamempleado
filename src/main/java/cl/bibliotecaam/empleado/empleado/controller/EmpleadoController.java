@@ -1,7 +1,10 @@
 package cl.bibliotecaam.empleado.empleado.controller;
 
+import cl.bibliotecaam.empleado.empleado.dto.EmpleadoRequestDTO;
 import cl.bibliotecaam.empleado.empleado.dto.EmpleadoResponseDTO;
+import cl.bibliotecaam.empleado.empleado.model.Empleado;
 import cl.bibliotecaam.empleado.empleado.service.EmpleadoService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
@@ -53,5 +56,17 @@ public class EmpleadoController {
         return ResponseEntity.noContent().build();
     }
 
+    @PostMapping
+    public ResponseEntity<Empleado> guardar(@Valid @RequestBody Empleado empleado){
+        Empleado nuevoEmpleado = empleadoService.guardar(empleado);
+        return ResponseEntity.status(201).body(nuevoEmpleado);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<EmpleadoResponseDTO> actualizar(@PathVariable Long id, @Valid @RequestBody EmpleadoRequestDTO doto){
+        return empleadoService.actualizar(id, doto)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
 
 }

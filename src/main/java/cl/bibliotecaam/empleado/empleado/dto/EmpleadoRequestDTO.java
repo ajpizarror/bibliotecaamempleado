@@ -32,7 +32,7 @@ public class EmpleadoRequestDTO {
     @NotBlank(message = "El apellido materno no puede estar vacío.")
     private String apmaterno_emp;
 
-    @NotBlank(message = "La fecha no puede estar vacía.")
+    @NotNull(message = "La fecha no puede estar vacía.")
     private LocalDate fec_contrato;
 
     @NotNull(message = "El sueldo no puede estar vacío.")

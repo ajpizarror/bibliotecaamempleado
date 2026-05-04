@@ -1,5 +1,6 @@
 package cl.bibliotecaam.empleado.empleado.service;
 
+import cl.bibliotecaam.empleado.empleado.dto.EmpleadoRequestDTO;
 import cl.bibliotecaam.empleado.empleado.dto.EmpleadoResponseDTO;
 import cl.bibliotecaam.empleado.empleado.model.Empleado;
 import cl.bibliotecaam.empleado.empleado.repository.EmpleadoRepository;
@@ -65,5 +66,19 @@ public class EmpleadoService {
 
     public void eliminarPorId(Long id){
         empleadoRepository.deleteById(id);
+    }
+
+    public Optional<EmpleadoResponseDTO> actualizar(Long id, EmpleadoRequestDTO doto){
+        return empleadoRepository.findById(id).map(existente -> {
+            existente.setNumrunEmp(doto.getNumrun_emp());
+            existente.setDvrunEmp(doto.getDvrun_emp());
+            existente.setPnombreEmp(doto.getPnombre_emp());
+            existente.setSnombreEmp(doto.getSnombre_emp());
+            existente.setAppaternoEmp(doto.getAppaterno_emp());
+            existente.setApmaternoEmp(doto.getApmaterno_emp());
+            existente.setFecContrato(doto.getFec_contrato());
+            existente.setSueldo(doto.getSueldo());
+            return mapToDTO(empleadoRepository.save(existente));
+        });
     }
 }

@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface EmpleadoRepository extends JpaRepository<Empleado, Long> {
 
-    List<Empleado> findAll();
     List<Empleado> findByNumrunEmp(Long numrun);
     List<Empleado> findByAppaternoEmp(String appaterno);
     List<Empleado> findBySueldo(Long sueldo);
