@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/bibliotecaam/empleados")
@@ -45,6 +46,11 @@ public class EmpleadoController {
     @GetMapping("/sueldo/{sueldo}")
     public ResponseEntity<List<EmpleadoResponseDTO>> obtenerPorSueldo(@PathVariable Long sueldo){
         return ResponseEntity.ok(empleadoService.listarPorSueldo(sueldo));
+    }
+
+    @GetMapping("/sueldomenora/{monto}")
+    public ResponseEntity<Optional<List<EmpleadoResponseDTO>>> obtenerSueldoMenorA(@PathVariable Long monto){
+        return ResponseEntity.ok(empleadoService.obtenerPorMonto(monto));
     }
 
     @DeleteMapping("/{id}")

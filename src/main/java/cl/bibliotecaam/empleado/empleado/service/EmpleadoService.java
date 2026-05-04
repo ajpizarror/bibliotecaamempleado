@@ -81,4 +81,12 @@ public class EmpleadoService {
             return mapToDTO(empleadoRepository.save(existente));
         });
     }
+
+    public Optional<List<EmpleadoResponseDTO>> obtenerPorMonto(Long monto){
+        return Optional
+                .of(empleadoRepository.findEmpleadoBySueldo(monto)
+                        .stream()
+                        .map((this::mapToDTO))
+                        .collect(Collectors.toList()));
+    }
 }
