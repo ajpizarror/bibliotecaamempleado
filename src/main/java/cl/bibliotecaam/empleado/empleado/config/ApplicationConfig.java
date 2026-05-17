@@ -16,9 +16,9 @@ public class ApplicationConfig {
         return config.getAuthenticationManager();
     }
 
-    public AuthenticationProvider authenticationProvider(){
+   /* public AuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider(); // <--NO SÉ POR QUÉ ME DA ERROR EL ENTRE PARÉNTESIS
 
-    }
+    }*/
 
 }
