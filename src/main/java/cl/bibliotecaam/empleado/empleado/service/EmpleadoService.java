@@ -60,8 +60,19 @@ public class EmpleadoService {
                 .collect(Collectors.toList());
     }
 
-    public Empleado guardar(Empleado empleado){
-        return empleadoRepository.save(empleado);
+    public EmpleadoResponseDTO guardar(EmpleadoRequestDTO doto){
+        Empleado empleado = new Empleado(
+                null,
+                doto.getNumrun_emp(),
+                doto.getDvrun_emp(),
+                doto.getPnombre_emp(),
+                doto.getSnombre_emp(),
+                doto.getAppaterno_emp(),
+                doto.getApmaterno_emp(),
+                doto.getFec_contrato(),
+                doto.getSueldo()
+                );
+        return mapToDTO(empleadoRepository.save(empleado));
     }
 
     public void eliminarPorId(Long id){

@@ -63,10 +63,8 @@ public class EmpleadoController {
     }
 
     @PostMapping
-    public ResponseEntity<Empleado> guardar(@Valid @RequestBody Empleado empleado){
-        Empleado nuevoEmpleado = empleadoService.guardar(empleado);
-        return ResponseEntity.status(201).body(nuevoEmpleado);
-    }
+    public ResponseEntity<EmpleadoResponseDTO> guardar(@Valid @RequestBody EmpleadoRequestDTO empleado){
+        return ResponseEntity.status(201).body(empleadoService.guardar(empleado));    }
 
     @PutMapping("/{id}")
     public ResponseEntity<EmpleadoResponseDTO> actualizar(@PathVariable Long id, @Valid @RequestBody EmpleadoRequestDTO doto){
