@@ -24,10 +24,8 @@ public class DataInitializer implements CommandLineRunner {
 
         log.info(">>> DataInitializer: BD vacía detectada, insertando datos de prueba...");
 
-        Empleado operario = empleadoRepository.save(
-                new Empleado(null,17752427L,"1","Alfonso","Jose","Pizarro","Ramirez", LocalDate.of(1990,11,15), 280000L));
-        Empleado gerente = empleadoRepository.save(
-                new Empleado(null,12345678L,"K","Martina","Soledad","Pizarro","Ramirez",LocalDate.of(1988,9,21),800000L));
+        empleadoRepository.save(new Empleado(null,17752427L,"1","Alfonso","Jose","Pizarro","Ramirez", LocalDate.of(1990,11,15), 580000L));
+        empleadoRepository.save(new Empleado(null,22321987L,"4","Miguel Angel","Gabriel","Arguello","Quintana",LocalDate.of(2006,7,20),500000L));
 
     }
 }

@@ -7,6 +7,7 @@ import cl.bibliotecaam.empleado.empleado.service.EmpleadoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/bibliotecaam/empleados")
+@RequestMapping("/api/bibliotecaam/empleado")
 @RequiredArgsConstructor
 public class EmpleadoController {
     private final EmpleadoService empleadoService;
@@ -24,7 +25,7 @@ public class EmpleadoController {
         return ResponseEntity.ok(empleadoService.listarTodos());
     }
 
-    @GetMapping("/id/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<EmpleadoResponseDTO> obtenerPorId(@PathVariable Long id){
         return empleadoService.obtenerPorId(id)
                 .map(ResponseEntity::ok)
@@ -63,9 +64,8 @@ public class EmpleadoController {
     }
 
     @PostMapping
-    public ResponseEntity<Empleado> guardar(@Valid @RequestBody Empleado empleado){
-        Empleado nuevoEmpleado = empleadoService.guardar(empleado);
-        return ResponseEntity.status(201).body(nuevoEmpleado);
+    public ResponseEntity<EmpleadoResponseDTO> guardar(@Valid @RequestBody EmpleadoRequestDTO doto){
+        return ResponseEntity.status(HttpStatus.CREATED).body(empleadoService.guardar(doto));
     }
 
     @PutMapping("/{id}")
