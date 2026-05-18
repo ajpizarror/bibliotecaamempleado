@@ -22,7 +22,7 @@ public class JwtService {
         return getToken(new HashMap<>(),user);
     }
 
-    private static final String SECRET_KEY = "bibliotecaam";
+    private static final String SECRET_KEY = "bibliotecaambibliotecaambibliotecaambibliotecaambibliotecaambibliotecaambibliotecaambibliotecaambibliotecaambibliotecaam";
 
     private String getToken(Map<String,Object> extraClaims, UserDetails user) {
         return Jwts
