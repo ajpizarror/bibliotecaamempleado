@@ -20,6 +20,8 @@ public class AuthService {
 
     private final AuthenticationManager authenticationManager;
 
+    private final PasswordEncoder passwordEncoder;
+
     public AuthResponse login(LoginRequest request){
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         UserDetails user = userRepository.findByUsername(request.getUsername()).orElseThrow();
@@ -30,7 +32,7 @@ public class AuthService {
     public AuthResponse register(RegisterRequest request){
         User user = User.builder()
                 .username(request.getUsername())
-                .password(request.getPassword())
+                .password(passwordEncoder.encode(request.getPassword()))
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
                 .country(request.getCountry())
