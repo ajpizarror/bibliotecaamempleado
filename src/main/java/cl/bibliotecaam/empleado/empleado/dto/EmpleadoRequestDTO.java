@@ -23,7 +23,6 @@ public class EmpleadoRequestDTO {
     @NotBlank(message = "El primer nombre no puede estar vacío.")
     private String pnombre_emp;
 
-    @NotBlank(message = "El segundo nombre no puede estar vacío.")
     private String snombre_emp;
 
     @NotBlank(message = "El apellido paterno no puede estar vacío.")

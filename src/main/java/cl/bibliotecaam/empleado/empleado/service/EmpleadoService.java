@@ -17,17 +17,32 @@ public class EmpleadoService {
     private final EmpleadoRepository empleadoRepository;
 
     private EmpleadoResponseDTO mapToDTO(Empleado empleado){
-        return new EmpleadoResponseDTO(
-                empleado.getIdEmp(),
-                empleado.getNumrunEmp(),
-                empleado.getDvrunEmp(),
-                empleado.getPnombreEmp(),
-                empleado.getSnombreEmp(),
-                empleado.getAppaternoEmp(),
-                empleado.getApmaternoEmp(),
-                empleado.getFecContrato(),
-                empleado.getSueldo()
-        );
+        if (empleado.getSnombreEmp() == null){
+
+            String tieneSegundoNombre = "No tiene segundo nombre.";
+            return new EmpleadoResponseDTO(
+                    empleado.getIdEmp(),
+                    empleado.getNumrunEmp(),
+                    empleado.getDvrunEmp(),
+                    empleado.getPnombreEmp(),
+                    tieneSegundoNombre,
+                    empleado.getAppaternoEmp(),
+                    empleado.getApmaternoEmp(),
+                    empleado.getFecContrato(),
+                    empleado.getSueldo());
+        } else {
+
+            return new EmpleadoResponseDTO(
+                    empleado.getIdEmp(),
+                    empleado.getNumrunEmp(),
+                    empleado.getDvrunEmp(),
+                    empleado.getPnombreEmp(),
+                    empleado.getSnombreEmp(),
+                    empleado.getAppaternoEmp(),
+                    empleado.getApmaternoEmp(),
+                    empleado.getFecContrato(),
+                    empleado.getSueldo());
+        }
     }
 
     public List<EmpleadoResponseDTO> listarTodos(){
