@@ -2,6 +2,7 @@ package cl.bibliotecaam.empleado.empleado;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 
@@ -11,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 * Que la logica indique que se esta autenticando principalmente al MS de Empleado.
 * En la evolucion futura, debemos separarlo y vincularlo con los MS que necesiten su token.
  */
+@EnableDiscoveryClient
 public class EmpleadoApplication {
 
 	public static void main(String[] args) {
