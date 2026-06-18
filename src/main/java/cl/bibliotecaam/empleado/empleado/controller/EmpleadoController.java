@@ -113,10 +113,10 @@ public class EmpleadoController {
     }
 
     @DeleteMapping("/{id}")
-    @Operation(summary = "Eliminar asistencia", description = "Elimina una asistencia acorde a una id.")
+    @Operation(summary = "Eliminar empleado", description = "Elimina a un empleado o empleada acorde a una id.")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200",description = "¡Asistencia eliminada con exito!"),
-            @ApiResponse(responseCode = "404",description = "ERROR: ¡El id de la asistencia ingresada no existe!")
+            @ApiResponse(responseCode = "200",description = "¡Empleado eliminado con exito!"),
+            @ApiResponse(responseCode = "404",description = "ERROR: ¡El id de el empleado ingresado no existe!")
     })
     public ResponseEntity<Void> eliminar(@PathVariable Long id){
         if (empleadoService.obtenerPorId(id).isEmpty()){
